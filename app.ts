@@ -12,7 +12,12 @@ const app = express();
 app.use(express.json());
 
 connectDB();
-
+// Display a welcome message by default
+app.get("/", (req: express.Request, res: express.Response) => {
+  res.status(200).json({
+    message: "Welcome to the API"
+  })
+})
 app.use('/api/auth', authRoutes);
 app.use('/api/questions', questionRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
